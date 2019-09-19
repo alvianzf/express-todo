@@ -24,6 +24,12 @@ mongoose.connect(db.staging || db.url, {
 }).then(res => console.log('Connected to', db.url || db.staging))
 .catch(err => console.log(err))
 
+// Models
+require('./models/todo')
+
+// Routes
+app.use(require('./routes'))
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
