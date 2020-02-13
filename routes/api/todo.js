@@ -3,7 +3,7 @@ var Todo = require('mongoose').model('Todos')
 
 router.get('/', function(req, res) {
     Todo.find().then(function(todos) {
-        return res.status(200).json({success: true, result: todos})
+        return res.status(200).json({success: true, records: todos.length, result: todos})
     }).catch(err => {
         return res.status(500).json({success: false, error: err.message})
     })
