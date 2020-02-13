@@ -7,6 +7,12 @@ router.get('/', function(req, res) {
     }).catch(err => console.log(err))
 })
 
+outer.get('/:id', function(req, res) {
+    Todo.findOne({_id: req.params.id}).then(function(todos) {
+        return res.status(200).json({todos})
+    }).catch(err => console.log(err))
+})
+
 router.post('/', (req, res) => {
     let todos = new Todo(req.body)
 
