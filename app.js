@@ -22,7 +22,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect(db.staging || db.url, {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 }).then(res => console.log('Connected to', db.url || db.staging))
 .catch(err => console.log(err))
 
