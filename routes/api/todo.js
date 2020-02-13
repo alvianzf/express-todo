@@ -11,9 +11,9 @@ router.get('/', function(req, res) {
 
 router.get('/:id', function(req, res) {
     Todo.findOne({_id: req.params.id}).then(function(todos) {
-        return res.status(200).json({success: true, result: todos})
+        return res.status(200).json({success: true, records: todos.length, result: todos})
     }).catch(err => {
-        return res.status(500).json({success: false, error: err}.message)
+        return res.status(500).json({success: false, error: err.message})
     })
 })
 
